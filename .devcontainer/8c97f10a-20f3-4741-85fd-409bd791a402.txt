@@ -1,0 +1,5 @@
+8c97f10a-20f3-4741-85fd-409bd791a402
+
+az repos policy approver-count create --repository-id 8c97f10a-20f3-4741-85fd-409bd791a402 --branch main --minimum-approver-count 1 --blocking true --enabled true --creator-vote-counts false --allow-downvotes true --reset-on-source-push true
+
+az repos policy comment-required create --repository-id 8c97f10a-20f3-4741-85fd-409bd791a402 --branch main --blocking true --enabled true
