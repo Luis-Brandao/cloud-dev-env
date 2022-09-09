@@ -28,14 +28,26 @@ RUN sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/micr
 RUN sudo apt-get update
 RUN sudo apt-get install azure-functions-core-tools-4
 
+#Install python
 RUN sudo apt update
 RUN sudo apt install python3-pip -y
+
+#Install pre-commit framework
 RUN pip install pre-commit
 
-RUN git config --global credential.httpusepath true
+RUN git config --global credential.useHttpPath true
 
-# Install go
+#Install go
 RUN sudo add-apt-repository ppa:longsleep/golang-backports
 RUN sudo apt update
-RUN sudo apt install golang-1.17 
-RUN export PATH=$PATH:/usr/lib/go-1.17/bin/
+RUN sudo apt install golang-1.17 -y
+#RUN export PATH=$PATH:/usr/lib/go-1.17/bin/
+RUN echo "export PATH=/usr/lib/go-1.17/bin/:${PATH}" >> /home/vscode/.bashrc
+
+#Install powershell
+RUN sudo apt-get install -y powershell
+
+#Configure alias
+RUN echo 'alias tf="./tf-wrapper.sh"' >> /home/vscode/.bashrc
+
+RUN git config --global --add safe.directory /home/repon
